@@ -1,16 +1,34 @@
-### Hi there 👋
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEngine;
 
-<!--
-**Fircediety09080/Fircediety09080** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+public class PlayerMovement : MonoBehaviour
+{
+    public float speed = 5f;
+    private float movement = 0f;
+    private Rigidbody2D rigidbody;
 
-Here are some ideas to get you started:
+    // Start is called before the first frame update
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        movement = Input.GetAxis("Horizontal");
+        if (movement > 0f)
+        {
+            rigidbody.velocity = new Vector2(movement * speed, rigidbody.velocity.y);
+        }
+        else if (movement< 0f)
+        {
+            rigidbody.velocity = new Vector2(movement * speed, rigidbody.velocity.y);
+        }
+    }
+}
+
